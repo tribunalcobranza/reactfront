@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
 
+//importamos los componentes
+import ComShowBlogs from './blog/ShowBlog';
+import CompCreateBlog from './blog/CreateBlog';
+import CompEditBlog from './blog/EditBlog';
+import LoginBlog from './blog/LoginBlog';
+import FacebookLogin from 'react-facebook-login';
+import LoginFacebook from './blog/LoginFacebook';
+
+//importamos el router
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LoginFacebook />} />
+          <Route path='/create' element={<LoginBlog />} />
+          {/* <Route path='/' element={<ComShowBlogs />} /> */}
+          <Route path='/create' element={<CompCreateBlog />} />
+          <Route path='/edit/:id' element={<CompEditBlog />} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
   );
 }
